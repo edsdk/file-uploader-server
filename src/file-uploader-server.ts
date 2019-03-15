@@ -12,10 +12,10 @@ class ExpressFileUploader {
         protected config: {[key: string]: string}
     ) {
         this.servlet = new UploaderServlet(config);
-        app.post('/uploader', (request: express.Request, response: express.Response) => {
+        app.post(url, (request: express.Request, response: express.Response) => {
             this.upload(request, response);
         });
-        app.options('/uploader', (request: express.Request, response: express.Response) => {
+        app.options(url, (request: express.Request, response: express.Response) => {
             this.uploadOptions(request, response);
         });
     }

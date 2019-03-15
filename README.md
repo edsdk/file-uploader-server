@@ -56,6 +56,14 @@ Currently there are available server side modules for:
 - ASP.NET
 
 
+## See Also
+
+- [ImgPen website](https://imgpen.com)
+- [ImgPen package](https://npmjs.org/package/@edsdk/imgpen)
+- [File Uploader as microservice](https://npmjs.org/package/@edsdk/file-uploader-microservice)
+- [File Uploader server and ImgPen example](https://npmjs.org/package/@edsdk/imgpen-example)
+
+
 ## License
 
 Double licensing with EdSDK licenses family. Free usage is available.
