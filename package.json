@@ -1,6 +1,6 @@
 {
   "name": "@edsdk/file-uploader-server",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "File uploader SDK backend in TypeScript. Perfectly works as uploader for ImgPen image editor.",
   "main": "./dist/file-uploader-server.js",
   "types": "./dist/file-uploader-server.d.ts",
@@ -37,6 +37,7 @@
     "upload",
     "server",
     "express",
-    "imgpen"
+    "imgpen",
+    "microservice"
   ]
 }

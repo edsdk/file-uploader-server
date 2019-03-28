@@ -20,6 +20,8 @@ $ npm install @edsdk/file-uploader-server
 
 ## Usage
 
+### Using inside your own Express server
+
 Bind required URL in your application in this way:
 
 ```js
@@ -38,9 +40,33 @@ If you want to allow access to uploaded files (usually you do) then write someth
 app.use(express.static('/var/www/files'));
 ```
 
-If you do not want to configure Express service and just want to have uploader instance, please use [File Uploader microservice](https://npmjs.com/package/@edsdk/file-uploader-microservice).
-
 Please also see [example of usage](https://github.com/edsdk/imgpen-example) File Uploader with ImgPen for editing and uploading images.
+
+
+### Running as microservice instance
+
+If you do not have your own Express server, you can run File Uploader as microservice.
+This means it will create new Express instance, do all required bindings and start to listen incoming requests.
+
+```js
+require("@edsdk/file-uploader-server").startFileUploaderMicroservice({
+    host: 'localhost',
+    port: 8080,
+    urlUploader: '/uploader',
+    dirRoot: './www',
+    dirFiles: './www/images'
+});
+```
+
+The code above will:
+
+- Listen `http://localhost/8080/uploader` and wait for files uploaded by file uploader compatible clients (like [ImgPen](https://npmjs.com/package/@edsdk/imgpen)).
+- Save uploaded files to `./www/images` directory
+- Serve `./www` directory as public in order to allow accessing uploaded files by there URLs.
+
+If you do not wish to share uploaded files with File Uploader microservice you can set `dirRoot: null`. This can be useful if you handle uploads with File Uploader but want to share them using another webserver which has access to the same storage.
+
+See [sample of usage](https://github.com/edsdk/imgpen-example) of File Uploader microservice together with [ImgPen](https://imgpen.com) image editor.
 
 
 ## Server languages support
@@ -53,15 +79,15 @@ Currently there are available server side modules for:
 - Node (TypeScript/JavaScript)
 - PHP
 - Java
-- ASP.NET
+
 
 
 ## See Also
 
 - [ImgPen website](https://imgpen.com)
 - [ImgPen package](https://npmjs.org/package/@edsdk/imgpen)
-- [File Uploader as microservice](https://npmjs.org/package/@edsdk/file-uploader-microservice)
 - [File Uploader server and ImgPen example](https://npmjs.org/package/@edsdk/imgpen-example)
+- [ImgPen + File Uploader example](https://github.com/edsdk/imgpen-example)
 
 
 ## License
