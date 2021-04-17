@@ -72,7 +72,7 @@ export function processFileUploaderRequest(
 
     let busboy = new Busboy({ "headers": request.headers });
     busboy.on('file', function(fieldname: string, file: any, filename: string, encoding: string, mimetype: string) {
-        if (fieldname === "file") {
+        if (fieldname === "file" || fieldname === "upload") {
             (request as any)["postFile"] = {
                 "filename": filename,
                 "data": null
